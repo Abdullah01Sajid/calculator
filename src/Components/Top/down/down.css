@@ -1,0 +1,14 @@
+.down_calc > button {
+  outline: none;
+  height: 50px;
+  width: 50px;
+  background-color: aqua;
+  border: 1px solid white;
+}
+.down_calc > button:hover {
+  background-color: aliceblue;
+}
+.down_calc {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
