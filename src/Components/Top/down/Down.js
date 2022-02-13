@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./down.css";
 function Down({ first, setFirst, second, setSecond }) {
-  const [result, setResult] = useState("");
   const [calc_action, setCalcAction] = useState("");
 
   const cutBtn = () => {
@@ -28,30 +27,53 @@ function Down({ first, setFirst, second, setSecond }) {
 
     switch (action) {
       case "+":
-        if (!first) return;
-        if (second !== "") {
-          setFirst(second);
-          setSecond("");
+        if (!first && second) {
+          setCalcAction("+");
+          setSecond(`${second} ${calc_action}`);
           return;
         }
+        if (!first) return;
+
         setCalcAction("+");
-        setSecond(`${first} +`);
+        setSecond(`${first} ${calc_action}`);
         setFirst("");
+
         break;
       case "-":
+        if (!first && second) {
+          console.log(second);
+          setCalcAction("-");
+          setSecond(`${second} -`);
+          return;
+        }
         if (!first) return;
+
         setCalcAction("-");
         setSecond(`${first} -`);
         setFirst("");
         break;
       case "/":
+        if (!first && second) {
+          console.log(second);
+          setCalcAction("/");
+          setSecond(`${second} /`);
+          return;
+        }
         if (!first) return;
+
         setCalcAction("/");
         setSecond(`${first} /`);
         setFirst("");
         break;
       case "*":
+        if (!first && second) {
+          console.log(second);
+          setCalcAction("*");
+          setSecond(`${second} *`);
+          return;
+        }
         if (!first) return;
+
         setCalcAction("*");
         setSecond(`${first} x`);
         setFirst("");
@@ -62,22 +84,26 @@ function Down({ first, setFirst, second, setSecond }) {
           const calc = first_integer + second_integer;
           setSecond(calc);
           setFirst("");
+          setCalcAction("");
         }
         if (calc_action === "-") {
           const calc1 = second_integer - first_integer;
           setSecond(calc1);
           console.log(calc1);
           setFirst("");
+          setCalcAction("");
         }
         if (calc_action === "/") {
           const calc2 = second_integer / first_integer;
           setSecond(calc2);
           setFirst("");
+          setCalcAction("");
         }
         if (calc_action === "*") {
           const calc2 = second_integer * first_integer;
           setSecond(calc2);
           setFirst("");
+          setCalcAction("");
         }
         break;
       default:
