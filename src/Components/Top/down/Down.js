@@ -28,21 +28,30 @@ function Down({ first, setFirst, second, setSecond }) {
 
     switch (action) {
       case "+":
+        if (!first) return;
+        if (second !== "") {
+          setFirst(second);
+          setSecond("");
+          return;
+        }
         setCalcAction("+");
         setSecond(`${first} +`);
         setFirst("");
         break;
       case "-":
+        if (!first) return;
         setCalcAction("-");
         setSecond(`${first} -`);
         setFirst("");
         break;
       case "/":
+        if (!first) return;
         setCalcAction("/");
         setSecond(`${first} /`);
         setFirst("");
         break;
       case "*":
+        if (!first) return;
         setCalcAction("*");
         setSecond(`${first} x`);
         setFirst("");
