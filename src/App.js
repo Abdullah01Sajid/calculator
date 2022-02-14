@@ -7,7 +7,7 @@ function App() {
   const [second, setSecond] = useState("");
   return (
     <div className="App">
-      <h2>Abdullah´s calculator</h2>
+      <h2> Abdullah´s calculator</h2>
       <div className="calc">
         <Top first={first} second={second} />
         <Down

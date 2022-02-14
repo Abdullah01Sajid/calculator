@@ -29,13 +29,13 @@ function Down({ first, setFirst, second, setSecond }) {
       case "+":
         if (!first && second) {
           setCalcAction("+");
-          setSecond(`${second} ${calc_action}`);
+          setSecond(`${second} +`);
           return;
         }
         if (!first) return;
 
         setCalcAction("+");
-        setSecond(`${first} ${calc_action}`);
+        setSecond(`${first} +`);
         setFirst("");
 
         break;
@@ -112,7 +112,9 @@ function Down({ first, setFirst, second, setSecond }) {
   };
   return (
     <div className="down_calc">
-      <button onClick={() => deleteBtn()}>AC</button>
+      <button className="equal" onClick={() => deleteBtn()}>
+        AC
+      </button>
       <button onClick={() => cutBtn()}>Del</button>
       <button onClick={() => btnClick("0")}>0</button>
       <button onClick={() => btnClick("1")}>1</button>
@@ -129,10 +131,8 @@ function Down({ first, setFirst, second, setSecond }) {
       <button onClick={() => calculate("-")}>-</button>
       <button onClick={() => calculate("/")}>/</button>
       <button onClick={() => calculate("*")}>x</button>
-
-      <button className="equals" onClick={() => calculate("=")}>
-        {" "}
-        ={" "}
+      <button className="equal" onClick={() => calculate("=")}>
+        =
       </button>
     </div>
   );
